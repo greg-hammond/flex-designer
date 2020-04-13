@@ -1,0 +1,95 @@
+body {
+  margin: 0.5vmax;
+  font: normal calc(.5em + .5vmin) "open sans";
+  background-color: #f1f2f4;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+.section {
+  width: 90%;
+  margin: 2vmax auto;
+}
+
+.wrapper {
+  width: 50%;
+  max-width: 500px;
+  min-width: 150px;
+  margin: 2vmax auto;
+}
+
+.demo-flex-parent {
+  display: flex;
+  flex-direction: var(--prop-flex-direction);
+  flex-wrap: var(--prop-flex-wrap);
+  justify-content: var(--prop-justify-content);
+  align-items: var(--prop-align-items);
+  align-content: var(--prop-align-content);
+  height: 10vmax;
+  background-color: rgba(140, 184, 217, 0.2);
+  border: 1px solid rgba(19, 142, 236, 0.7);
+  border-radius: 0.25vmax;
+  margin-bottom: 4vmax;
+  /* each flex item inside the flex-parent */
+}
+.demo-flex-parent p {
+  flex-basis: var(--prop-flex-basis);
+  flex-grow: var(--prop-flex-grow);
+  flex-shrink: var(--prop-flex-shrink);
+  text-align: center;
+  padding: 0.25vmax 1vmax;
+  margin: 0.2vmax;
+  border: 1px solid rgba(0, 0, 0, 0.6);
+  border-radius: 0.2vmax;
+  color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+/* =======================================================================
+  flex property selection
+ =======================================================================*/
+.flexprops {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 95%;
+  margin: 0.3vmax 0;
+  border: 0.1vmax solid #76acd5;
+  border-radius: 0.25vmax;
+}
+.flexprops .prop {
+  display: flex;
+  flex-direction: column;
+  width: 15%;
+  margin: 0.2vmax;
+}
+.flexprops .prop .propName {
+  font-weight: bold;
+  text-align: center;
+  padding: 0.5vmax 0.25vmax;
+  cursor: help;
+}
+.flexprops .prop .propval {
+  text-align: center;
+  padding: 0.25vmax 1vmax;
+  margin: 0.2vmax;
+  border: 1px solid #76acd5;
+  border-radius: 0.2vmax;
+  color: #76acd5;
+  background-color: transparent;
+  cursor: pointer;
+}
+.flexprops .prop .propval.selected {
+  background-color: #76acd5;
+  color: #d4e8f7;
+}
+.flexprops .prop .propval:hover:not(.selected) {
+  background-color: #e3e6e8;
+}
+
+/*# sourceMappingURL=style.css.map */

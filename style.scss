@@ -1,0 +1,128 @@
+
+body {
+	margin: .5vmax;
+	font: normal calc(.5em + .5vmin) 'open sans';
+	background-color: hsl(206, 10%, 95%);
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	user-select: none;
+}
+
+.section {
+	width: 90%;
+	margin: 2vmax auto;
+}
+
+@mixin button($color: #333, $bkg: #999) {
+	text-align: center;
+	padding: .25vmax 1vmax;
+	margin: .2vmax;
+	border: 1px solid $color;
+	border-radius: .2vmax;
+	color: $color;
+	background-color: $bkg;
+
+}
+
+.wrapper {
+	width: 50%;
+	max-width: 500px;
+	min-width: 150px;
+	margin: 2vmax auto;
+}
+
+// demo area
+.demo-flex-parent {
+
+	display: flex;								
+	flex-direction: var(--prop-flex-direction);
+	flex-wrap:	var(--prop-flex-wrap);
+	justify-content: var(--prop-justify-content);			
+	align-items: var(--prop-align-items);			
+	align-content: var(--prop-align-content);
+
+	height: 10vmax;
+	background-color: hsla(206, 50%, 70%, 0.2);
+	border: 1px solid hsla(206, 85%, 50%, 0.7);
+	border-radius: .25vmax;
+	margin-bottom: 4vmax;
+
+    /* each flex item inside the flex-parent */
+    p {
+        flex-basis: var(--prop-flex-basis);		
+		flex-grow: var(--prop-flex-grow);
+		flex-shrink: var(--prop-flex-shrink);
+
+		@include button(rgba(0,0,0,.6), rgba(0,0,0,.03));
+
+    }
+}
+
+
+/* =======================================================================
+  flex property selection
+ =======================================================================*/
+
+// the configuration areas - parent/container, and child properties
+
+.flexprops {
+
+	$hue: 206;
+	$color-dark: hsl($hue, 53%, 65%);
+	$color-hilite: hsl($hue, 10%, 90%);
+	$color-light: hsl($hue, 70%, 90%);
+
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+
+	width: 95%;
+	margin: .3vmax 0;
+	border: .1vmax solid $color-dark;
+	border-radius: .25vmax;
+
+	// each property section
+	.prop {
+
+		display: flex;
+		flex-direction: column;
+
+		width: 15%;
+		margin: .2vmax;
+	
+		// the property name header
+		.propName {
+			font-weight: bold;
+			text-align: center;
+			padding: .5vmax .25vmax;
+			cursor: help;
+
+		}
+
+		// each property value button
+		.propval {
+
+			@include button($color-dark, transparent);
+
+			cursor: pointer;
+
+			&.selected {
+				background-color: $color-dark;
+				color: $color-light;
+			}
+	
+			&:hover:not(.selected) {
+				background-color: $color-hilite;
+			}
+			
+		}
+	}
+}
+
+
+
+
