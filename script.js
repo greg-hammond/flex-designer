@@ -1,16 +1,6 @@
-"use strict";
+
 
 const init = () => {
-
-    const styleDecl = document.documentElement.style;
-    const dataAttr = "data-prop";
-    const prefix = "--prop-";
-    const classes = {
-        selected: "selected",
-        property: "prop",
-        propertyVal: "propval",
-        propName: "propName"
-    };
 
     // helper function.  create element of 'type' with 'text' content, and append to 'parent'
     // multiple classnames can be passed in as parameters 4-n.  spread operator handles nicely.
@@ -27,24 +17,28 @@ const init = () => {
 
     const buildPropUI = (props, container) => {
 
+        const styleDecl = document.documentElement.style;
+        const dataAttr = "data-prop";
+        const prefix = "--prop-";
+
         props.forEach( prop => {
     
             // add a property div
-            const propDiv = addElem(container, "div", "", classes.property);
+            const propDiv = addElem(container, "div", "", "prop");
             const dataProp = prefix + prop.name;
             const initVal = prop.init;
             propDiv.setAttribute(dataAttr, dataProp);
             styleDecl.setProperty(dataProp, initVal);
     
-            const elem = addElem(propDiv, "p", prop.name, classes.propName);
+            const elem = addElem(propDiv, "p", prop.name, "propName");
             elem.setAttribute("title", prop.comment); // tooltip
     
             prop.values.forEach( val => {
     
-                const btn = addElem(propDiv, "p", val, classes.propertyVal);
+                const btn = addElem(propDiv, "p", val, "propval");
                 // mark as selected if it's the initial value
                 if (val === initVal) {
-                    btn.classList.add(classes.selected);
+                    btn.classList.add("selected");
                 }
     
                 btn.addEventListener("click", event => {
@@ -55,7 +49,7 @@ const init = () => {
                     // update the css variable.  voila!
                     styleDecl.setProperty(cssVar, btn.textContent);
                     // mark 'this' as selected, all other siblings as de-selected
-                    parent.childNodes.forEach( ch => ch.classList.toggle(classes.selected, ch === btn));
+                    parent.childNodes.forEach( ch => ch.classList.toggle("selected", ch === btn));
                 });
             })  // values
         }) // props
@@ -68,10 +62,7 @@ const init = () => {
     // build the individual item operators
     buildPropUI(flexPropData.childProps, document.querySelector(".flexprops.children"));
 
-
 }  // init
-
-
 
 
 window.onload = init;

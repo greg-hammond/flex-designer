@@ -78,11 +78,7 @@ var flexPropData =
             "values": [
                 "0",
                 "auto",
-                "content",
-                "fill",
-                "max-content",
-                "min-content",
-                "fit-content"
+                "content"
             ]
         },
         {
